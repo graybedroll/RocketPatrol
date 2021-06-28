@@ -3,12 +3,9 @@ class Scores extends Phaser.Scene {
         super("scoresScene");
     }
 
-    preload(){
-    }
-
     create() {
         //menu text config
-        let menuConfig = {
+        let scoresConfig = {
             fontFamily: 'Courier',
             fontSize: '16px',
             backgroundColor: '#F3B141',
@@ -21,11 +18,11 @@ class Scores extends Phaser.Scene {
             fixedWidth: 0
             }
 
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'HIGH SCORES', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'HIGH SCORES', scoresConfig).setOrigin(0.5);
         //this.add.text(game.config.width/2, game.config.height/2, 'Use left and right arrows to move and (F) to fire', menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press the left arrow for Menu', menuConfig).setOrigin(0.5);
+        scoresConfig.backgroundColor = '#00FF00';
+        scoresConfig.color = '#000';
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press the left arrow for Menu', scoresConfig).setOrigin(0.5);
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
