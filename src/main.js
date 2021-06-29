@@ -13,3 +13,6 @@ let keyF, keyR, keyLEFT, keyRIGHT, keyH;
 // set UI sizes
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
+
+// reserve high scores
+let score1, score2, score3 = 0;
