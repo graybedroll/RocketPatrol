@@ -25,9 +25,9 @@ class Menu extends Phaser.Scene {
             }
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL: THE FISHING GAME', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use left and right arrows to move and (F) to fire', menuConfig).setOrigin(0.5);
-        menuConfig.color = '#3e9e4e';
         menuConfig.fontSize = '18px';
+        this.add.text(game.config.width/2, game.config.height/2, 'Use left and right arrows to MOVE and (F) to FISH!', menuConfig).setOrigin(0.5);
+        menuConfig.color = '#3e9e4e';
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press the left arrow for Novice, the right arrow for Expert, or (H) to see High Scores', menuConfig).setOrigin(0.5);
 
         // define keys

@@ -53,17 +53,17 @@ class Play extends Phaser.Scene {
 
           // display score
           let scoreConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            fontFamily: 'Marker felt, fantasy',
+            fontSize: '30px',
+            backgroundColor: '#c9a677',
+            color: '#6a563b',
             align: 'right',
             padding: {
-              top: 5,
-              bottom: 5,
+                top: 5,
+                bottom: 5,
             },
-            fixedWidth: 100
-          }
+            fixedWidth: 0
+            }
           this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         // GAME OVER flag
         this.gameOver = false;
@@ -71,6 +71,7 @@ class Play extends Phaser.Scene {
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+            scoreConfig.fontSize = '20px';
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or the left arrow for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
@@ -80,6 +81,22 @@ class Play extends Phaser.Scene {
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
           this.scene.restart();
+        }
+
+        //add to high scores
+        if(this.gameOver){
+          if(this.p1Score > score1){
+            score3 = score2;
+            score2 = score1;
+            score1 = this.p1Score;
+          }
+          else if(this.p1Score > score2 && this.p1Score < score1){
+            score3 = score2;
+            score2 = this.p1Score;
+          }
+          else if(this.p1Score > score3 && this.p1Score < score1 && this.p1Score <= score2){
+            score3 = this.p1Score;
+          }
         }
 
         this.starfield.tilePositionX -= 2;

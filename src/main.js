@@ -15,4 +15,6 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 // reserve high scores
-let score1, score2, score3 = 0;
+let score1 = 0;
+let score2 = 0;
+let score3 = 0;

@@ -7,7 +7,7 @@ class Scores extends Phaser.Scene {
         console.log("high scores pls");
 
         //scores text config
-        let menuConfig = {
+        let scoresConfig = {
             fontFamily: 'Marker felt, fantasy',
             fontSize: '24px',
             color: '#779ac9',
@@ -19,11 +19,12 @@ class Scores extends Phaser.Scene {
             fixedWidth: 0
             }
 
-        this.add.text(game.config.width/2, game.config.height - borderUISize - borderPadding, 'HIGH SCORES', scoresConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, score1 /n score2 /n score3, menuConfig).setOrigin(0.5);
-        scoresConfig.backgroundColor = '#00FF00';
-        scoresConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press the left arrow for Menu', scoresConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/3 - borderUISize - borderPadding, 'HIGH SCORES', scoresConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - 68, "1. " + score1, scoresConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, "2. " + score2, scoresConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 68, "3. " + score3, scoresConfig).setOrigin(0.5);
+        scoresConfig.color = '#3e9e4e';
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 68, 'Press the left arrow for Menu', scoresConfig).setOrigin(0.5);
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -33,6 +34,7 @@ class Scores extends Phaser.Scene {
     update() {
         //go back to menu
         if(Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+            this.sound.play('sfx_select');
             this.scene.start("menuScene");
         }
     }
