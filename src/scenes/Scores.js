@@ -4,6 +4,8 @@ class Scores extends Phaser.Scene {
     }
 
     create() {
+        console.log("high scores pls");
+
         //menu text config
         let scoresConfig = {
             fontFamily: 'Courier',
