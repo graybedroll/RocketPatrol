@@ -44,7 +44,7 @@ class Menu extends Phaser.Scene {
             gameTimer: 60000    
           }
           this.sound.play('sfx_select');
-          this.scene.start('playScene');    
+          this.scene.start('playersScene');    
         }
         if(Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
           // hard mode
@@ -53,7 +53,7 @@ class Menu extends Phaser.Scene {
             gameTimer: 45000    
           }
           this.sound.play('sfx_select');
-          this.scene.start('playScene');    
+          this.scene.start('playersScene');    
         }
         if(Phaser.Input.Keyboard.JustDown(keyH)) {
           this.sound.play('sfx_select');
