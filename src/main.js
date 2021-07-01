@@ -18,5 +18,3 @@ let borderPadding = borderUISize / 3;
 let score1 = 0;
 let score2 = 0;
 let score3 = 0;
-
-let left, right, fire;

@@ -28,13 +28,14 @@ class Play extends Phaser.Scene {
         //this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
 
         // add rocket (p1)
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket2(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
         // define keys
-        keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
           // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
@@ -51,20 +52,20 @@ class Play extends Phaser.Scene {
         // initialize score
         this.p1Score = 0;
 
-          // display score
-          let scoreConfig = {
-            fontFamily: 'Marker felt, fantasy',
-            fontSize: '30px',
-            backgroundColor: '#c9a677',
-            color: '#6a563b',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-            }
-          this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        // display score
+        let scoreConfig = {
+          fontFamily: 'Marker felt, fantasy',
+          fontSize: '30px',
+          backgroundColor: '#c9a677',
+          color: '#6a563b',
+          align: 'right',
+          padding: {
+              top: 5,
+              bottom: 5,
+          },
+          fixedWidth: 0
+          }
+        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
         // GAME OVER flag
         this.gameOver = false;
         // 60-second play clock
@@ -78,6 +79,8 @@ class Play extends Phaser.Scene {
       }
 
       update() {
+        console.log(this.clock);
+
         // check key input for restart
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
           this.scene.restart();
@@ -154,5 +157,7 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
+        // add to timer
+        this.game.settings.gameTimer += 10000;
       }
 }
