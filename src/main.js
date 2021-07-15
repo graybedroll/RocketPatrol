@@ -1,3 +1,10 @@
+/* mods:
+    -adds time for every successful catch
+    -different graphics and audio
+    -high scores screen
+    -co-op 2 player mode
+    */
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
