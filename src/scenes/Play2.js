@@ -3,13 +3,6 @@ class Play2 extends Phaser.Scene {
         super("play2Scene");
     }
 
-    /* mods:
-    -adds time for every successful catch
-    -different graphics and audio
-    -high scores screen
-    -co-op 2 player mode
-    */
-
     preload() {
         // load images/tile sprites
         this.load.image('rocket', './assets/rocket.png');
